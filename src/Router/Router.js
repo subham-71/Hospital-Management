@@ -14,7 +14,6 @@ const Rautes = () => {
     <>
       <Head />
       <Routes>
-        <Route path="/" element={<Temp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/patient" element={<Patient />} />
