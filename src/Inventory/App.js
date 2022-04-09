@@ -1,0 +1,40 @@
+import { useState } from "react";
+import { Container, Navbar, Row, Col } from "react-bootstrap";
+import AddItem from "./components/AddItem";
+import ItemsList from "./components/ItemList";
+import "./App.css";
+
+function App() {
+  const [itemId, setItemId] = useState("");
+
+  const getItemIdHandler = (id) => {
+    console.log("The ID of document to be edited: ", id);
+    setItemId(id);
+  };
+  return (
+    <>
+      <Navbar bg="dark" variant="dark" className="header">
+        <Container>
+          <Navbar.Brand href="#home">Inventory </Navbar.Brand>
+        </Container>
+      </Navbar>
+
+      <Container style={{ width: "400px" }}>
+        <Row>
+          <Col>
+            <AddItem id={itemId} setItemId={setItemId} />
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+            <ItemsList getItemId={getItemIdHandler} />
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+export default App;
