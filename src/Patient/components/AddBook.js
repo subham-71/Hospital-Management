@@ -1,53 +1,53 @@
 import React, { useState, useEffect } from "react";
-import { Form, Alert, InputGroup, Button } from "react-bootstrap";
-import ItemDataService from "../services/item_services";
+import { Form, Alert, InputGroup, Button, ButtonGroup } from "react-bootstrap";
+import BookDataService from "../services/book.services";
 
-const AddItem = ({ id, setItemId }) => {
+const AddBook = ({ id, setBookId }) => {
   const [title, setTitle] = useState("");
-  const [available, setAvailable] = useState("");
-  const [max, setMax] = useState("");
+  const [author, setAuthor] = useState("");
+  const [status, setStatus] = useState("Available");
+  const [flag, setFlag] = useState(true);
   const [message, setMessage] = useState({ error: false, msg: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-    if (title === "" || available === "") {
+    if (title === "" || author === "") {
       setMessage({ error: true, msg: "All fields are mandatory!" });
       return;
     }
-    const newItem = {
+    const newBook = {
       title,
-      available,
-      max,
+      author,
+      status,
     };
-    console.log(newItem);
+    console.log(newBook);
 
     try {
       if (id !== undefined && id !== "") {
-        await ItemDataService.updateItem(id, newItem);
-        setItemId("");
+        await BookDataService.updateBook(id, newBook);
+        setBookId("");
         setMessage({ error: false, msg: "Updated successfully!" });
       } else {
-        await ItemDataService.addItem(newItem);
-        setMessage({ error: false, msg: "New Item added successfully!" });
+        await BookDataService.addBooks(newBook);
+        setMessage({ error: false, msg: "New Book added successfully!" });
       }
     } catch (err) {
       setMessage({ error: true, msg: err.message });
     }
 
     setTitle("");
-    setAvailable("");
-    setMax("");
+    setAuthor("");
   };
 
   const editHandler = async () => {
     setMessage("");
     try {
-      const docSnap = await ItemDataService.getItem(id);
+      const docSnap = await BookDataService.getBook(id);
       console.log("the record is :", docSnap.data());
       setTitle(docSnap.data().title);
-      setAvailable(docSnap.data().available);
-      setMax(docSnap.data().max);
+      setAuthor(docSnap.data().author);
+      setStatus(docSnap.data().status);
     } catch (err) {
       setMessage({ error: true, msg: err.message });
     }
@@ -73,42 +73,51 @@ const AddItem = ({ id, setItemId }) => {
         )}
 
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formItemTitle">
+          <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formItemTitle">T</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
               <Form.Control
                 type="text"
-                placeholder="Item Title"
+                placeholder="Book Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formItemAuthor">
+          <Form.Group className="mb-3" controlId="formBookAuthor">
             <InputGroup>
-              <InputGroup.Text id="formItemAuthor">A</InputGroup.Text>
+              <InputGroup.Text id="formBookAuthor">A</InputGroup.Text>
               <Form.Control
                 type="text"
-                placeholder="Items available currently"
-                value={available}
-                onChange={(e) => setAvailable(e.target.value)}
+                placeholder="Book Author"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
               />
             </InputGroup>
           </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formItemMax">
-            <InputGroup>
-              <InputGroup.Text id="formItemMax">M</InputGroup.Text>
-              <Form.Control
-                type="text"
-                placeholder="Max item available"
-                value={max}
-                onChange={(e) => setMax(e.target.value)}
-              />
-            </InputGroup>
-          </Form.Group>
-
+          <ButtonGroup aria-label="Basic example" className="mb-3">
+            <Button
+              disabled={flag}
+              variant="success"
+              onClick={(e) => {
+                setStatus("Available");
+                setFlag(true);
+              }}
+            >
+              Available
+            </Button>
+            <Button
+              variant="danger"
+              disabled={!flag}
+              onClick={(e) => {
+                setStatus("Not Available");
+                setFlag(false);
+              }}
+            >
+              Not Available
+            </Button>
+          </ButtonGroup>
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">
               Add/ Update
@@ -120,4 +129,4 @@ const AddItem = ({ id, setItemId }) => {
   );
 };
 
-export default AddItem;
+export default AddBook;

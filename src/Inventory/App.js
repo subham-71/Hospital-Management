@@ -13,12 +13,6 @@ function Inventory() {
   };
   return (
     <>
-      <Navbar bg="dark" variant="dark" className="header">
-        <Container>
-          <Navbar.Brand href="#home">Inventory </Navbar.Brand>
-        </Container>
-      </Navbar>
-
       <Container style={{ width: "400px" }}>
         <Row>
           <Col>
