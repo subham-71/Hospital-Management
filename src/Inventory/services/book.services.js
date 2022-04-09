@@ -1,4 +1,4 @@
-import { db } from "../firebase-config";
+import { firestore as db } from "../../Components/Auth/FireBase";
 
 import {
   collection,

@@ -4,7 +4,7 @@ import AddItem from "./components/AddItem";
 import ItemsList from "./components/ItemList";
 import "./App.css";
 
-function App() {
+function Inventory() {
   const [itemId, setItemId] = useState("");
 
   const getItemIdHandler = (id) => {
@@ -37,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default Inventory;

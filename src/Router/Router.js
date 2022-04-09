@@ -7,6 +7,7 @@ import Temp from "../Temp";
 import Patient from "../Patient/Patient";
 import Receiptionist from "../User/Receiptionist";
 import Head from "../Components/Header";
+import Inventory from "../Inventory/App";
 
 const Rautes = () => {
   return (
@@ -17,6 +18,7 @@ const Rautes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/patient" element={<Patient />} />
+        <Route path="/inventory" element={<Inventory/>}/>
         <Route path="/receiptionist" element={<Receiptionist />} />
       </Routes>
     </>

@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore";
+import { collection,getDocs,addDoc, updateDoc, doc, deleteDoc} from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { firestore } from "../Components/Auth/FireBase";
 import "./Inventory.css";
@@ -7,6 +7,23 @@ import "./Inventory.css";
 function Receiptionist() {
   const [doctors, setDoctors] = useState([]);
   const [labs, setLabs] = useState([]);
+  const [doctorName,setDoctorName]=useState("");
+  const [patientID,setPatientID]=useState("");
+  const ref = collection(firestore,"doctor")
+
+  // const createUser = async () =>{
+  //   await addDoc(ref,{Name:newName,Email:newEmail,Credit:10}) 
+  // };
+
+  const updateUser = async() =>{
+    //  let doctorref = db.collection("doctor").doc(doctorName);
+    //  doctorref.update({PatientID: firebase.firestore.FieldValue.arrayUnion(patientID)});
+  };
+
+  // const deleteUser= async(id) =>{
+  //   const userDoc = doc(db,"users",id);
+  //   await deleteDoc(userDoc);
+  // }
 
   useEffect(() => {
     const userCollectionRef = collection(firestore, "doctor");
@@ -28,12 +45,28 @@ function Receiptionist() {
 
   return (
     <div>
+    <input 
+        placeholder="...Doctor ID"
+        onChange={(e)=>{
+          setDoctorName(e.target.value);
+        }}
+      />
+      <input 
+        placeholder="...Patient ID"
+        onChange={(e)=>{
+          setPatientID(e.target.value);
+        }}
+      />
+      <button onClick={updateUser}>Update Patient ID</button>
+    {/* <button onClick={()=>updateUser(doctor.id,doctor.PatientID)}>Increase Credit</button>
+    <button onClick={()=>deleteUser(doctor.id)}>Delete User</button> */}
+
     <table className="content-table" classNamestyle={{ margin: "50px", 'text-align': 'center', 'padding':'20px' }}>
         <thead>
           <th>NAME</th>
-          <th>CURRENT AMOUNT</th>
-          <th>DESIRED</th>
-          <th>CRITICAL</th>
+          <th>SPECIALIZATION</th>
+          <th>PATIENT ID</th>
+          <th>WORKING DAYS</th>
         </thead>
         <tbody>
           {
@@ -41,9 +74,9 @@ function Receiptionist() {
               return (
                 <tr key={idx}>
                   <td>{doctor.id}</td>
-                  <td>{doctor.CurrentAmount}</td>
-                  <td>{doctor["Patient ID"]}</td>
-                  <td>{doctor["Working Days"]}</td>
+                  <td>{doctor.Specialization}</td>
+                  <td>{doctor.PatientID}</td>
+                  <td>{doctor.WorkingDays}</td>
                 </tr>
               )
             })
