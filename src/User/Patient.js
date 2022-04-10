@@ -66,6 +66,10 @@ function Patient() {
             <th>Lab:</th>
             <td>{patientData.labAssigned}</td>
           </tr>
+          <tr>
+            <th>Doctor Assigned:</th>
+            <td>{patientData.doctorAssigned}</td>
+          </tr>
 
         </thead>
         
