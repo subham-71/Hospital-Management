@@ -160,33 +160,60 @@ function Doctor() {
     </Container>
     
       <br/><h7>Treated Patients</h7><br/>
-      <input 
-        placeholder="Your Name"
-        onChange={(e)=>{
-          setDoctorName(e.target.value);
-        }}
-      />
-      <button onClick={removePatient}>Remove Patient</button>
+      <Container style={{ width: "400px" }}>
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Doctor Name"
+            onChange={(e) => setDoctorName(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      
+    </Form>
+    <Button variant="secondary" className="edit" onClick={removePatient}>
+      Remove Patient
+    </Button>
+    </Container>
+     
     </div>
-    <br/><h7>Add Inventory</h7><br/>
-    <input 
-        placeholder="Inventory"
-        onChange={(e)=>{
-          setInventoryName(e.target.value);
-        }}
-      />
-      <input 
-        placeholder="Quantity"
-        onChange={(e)=>{
-          setQuantity(e.target.value);
-        }}
-      />
-      <br/>
-      <Button variant="secondary" className="edit" onClick={addInventory}>
+    <br/>
+    <h7>Prescriptions</h7><br/>
+    <Container style={{ width: "400px" }}>
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Prescription"
+            onChange={(e) => setInventoryName(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Quantity"
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      
+    </Form>
+    <Button variant="secondary" className="edit" onClick={addInventory}>
       Add to Cart
     </Button>
+    </Container>
+
     </>
   );
 }
 
 export default Doctor;
+
