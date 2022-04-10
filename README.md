@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# HACKSTACK'22 - HOSPITAL MANAGEMENT SYSTEM
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We have created a robust digital solution for the hospital management system. This has the potential to replace the old way of how the hospital works.
 
-## Available Scripts
+Our prototype has solutions for the entire hospital machinery from receiptionist, doctor, lab to the medicine shop. This involves all the stakeholders of the hospital system.
 
-In the project directory, you can run:
+This is comfortable and efficient system for both doctor and the patient.
 
-### `npm start`
+This is the whole flow of our system:-
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-> The patient enters the hospital and is greeted by the receiptionist. The receiptionist generates a patient ID for them, which contains fields like name, age, issues, lab assigned, doctor assigned
+![image](https://user-images.githubusercontent.com/72060359/162630048-85ca5313-e441-4d28-be18-3211a0b2e003.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+-> The receiptionist will assign doctor to the patient. The doctor can see the patient assigned by the receiptionist.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://user-images.githubusercontent.com/72060359/162630170-a86cd255-18ec-4137-999a-d0f705ba7626.png)
 
-### `npm run build`
+-> Now the doctor interface has patient details menu through which he can see the details about the patient
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://user-images.githubusercontent.com/72060359/162630234-dbf52d49-e1c7-4c41-a11b-b085b9f74cb2.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-> The doctor interface also contains options to assign desired labs to the patient where they can get tested. Moreover, the doctor can add the diagonsed issues in the patient profile. On completion of patient treatment, the doctor can remove the assigned patient.
+![image](https://user-images.githubusercontent.com/72060359/162632474-bb3dd451-3652-456d-ba96-2b6532299277.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+-> Also the doctor can add the prescription for the patient. So this eliminates the need for the bill for the patient.
+![image](https://user-images.githubusercontent.com/72060359/162632499-bf090f73-8faf-40f6-a258-9b47c03da6ba.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-> Now, coming to the lab, they can see their occupany, the assigned patients, add issue and remove the diagonsed patient.
+![image](https://user-images.githubusercontent.com/72060359/162632522-ff968a0a-b8c2-4fc5-ad0d-5c6aea780941.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-> There is an interface for the patient, where they can check their details and the lab assigned and the doctor assigned.
+![image](https://user-images.githubusercontent.com/72060359/162632568-972df77a-ba72-464f-b461-9266d4956e02.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-> There is a tab for the inventory too, where you can see the available inventory, available quantity and max amount. Through this tab, they can add, update and delet a particular entry
+![image](https://user-images.githubusercontent.com/72060359/162632600-114121c9-83b1-4394-b30d-e8b7f94569fb.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
