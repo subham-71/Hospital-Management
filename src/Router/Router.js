@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../Components/Auth/Login";
 import Signup from "../Components/Auth/Signup";
 import Temp from "../Temp";
-import Patient from "../Patient/Patient";
+// import Patient from "../Patient/Patient";
 import Receiptionist from "../User/Receiptionist";
 import Head from "../Components/Header";
 import Inventory from "../Inventory/App";
