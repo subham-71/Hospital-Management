@@ -11,6 +11,8 @@ function Doctor() {
     const [issue,setIssue]= useState("");
     const [lab,setLab]=useState("");
     const [doctorName,setDoctorName]=useState("");
+    const [quantity,setQuantity]=useState(0);
+    const [inventory,setInventory]=useState("");
 
     const getPatientInfo = async() =>{
         let doctorref = doc(firestore, "patient", patientID)
@@ -55,7 +57,7 @@ function Doctor() {
   return (
      <>
     <div className="p-4 box">
-      
+
     <Container style={{ width: "400px" }}>
     <Form style={{'max-width':'400px','text-align':'center'}}>
       <Form.Group className="mb-3" controlId="formItemMax" >
@@ -70,38 +72,84 @@ function Doctor() {
       </Form.Group>
       
     </Form>
+    <Button variant="primary" className="edit" onClick={getPatientInfo}>
+      Get Patient Details
+            </Button>
     </Container>
     </div>
+    <Container style={{ width: "1000px" }}>
+    <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>Patient Name:</th>
+            <td>{patientData.name}</td>
+          </tr>
+          <tr>
+            <th>Patient Age: </th>
+            <td>{patientData.age}</td>
+          </tr>
+          <tr>
+            <th>Last Visited:</th>
+            <td>{patientData.dueDate}</td>
+          </tr>
+          <tr>
+            <th>Issues:</th>
+            <td>{patientData.Issues}</td>
+          </tr>
+          <tr>
+            <th>Lab:</th>
+            <td>{patientData.labAssigned}</td>
+          </tr>
+
+        </thead>
+        
+      </Table>
+      </Container>
     <div>
-      <input 
-        placeholder="...Patient ID"
-        onChange={(e)=>{
-          setPatientID(e.target.value);
-        }}
-       />
-      <button onClick={getPatientInfo}>Get Patient Details</button>
+        
       
-    <div>Patient Name: {patientData.name}</div>
-    <div>Patient Age: {patientData.age}</div>
-    <div>Last Visited: {patientData.dueDate}</div>
-    <div>Issues: {patientData.Issues}</div>
-    <div>Lab: {patientData.labAssigned}</div>
-    <input 
-        placeholder="...Issue Name"
-        onChange={(e)=>{
-          setIssue(e.target.value);
-        }}
-    />
-    <button onClick={addNewIssue}>Add New Issue</button>
-    <button onClick={deleteIssue}>Delete Issue</button>
+    <Container style={{ width: "400px" }}>
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Issue Name"
+            onChange={(e) => setIssue(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      
+    </Form>
+    <Button variant="secondary" className="edit" onClick={addNewIssue}>
+      Add Issue
+    </Button>
+    <Button variant="danger" className="edit" onClick={deleteIssue}>
+      Delete Issue
+    </Button>
+    </Container>
+    
     <br/>
-    <input 
-        placeholder="Lab ID"
-        onChange={(e)=>{
-          setLab(e.target.value);
-        }}
-      />
-      <button onClick={assignLab}>Assign Lab</button>
+    <Container style={{ width: "400px" }}>
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Lab ID"
+            onChange={(e) => setLab(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      
+    </Form>
+    <Button variant="secondary" className="edit" onClick={addNewIssue}>
+      Assign Lab
+    </Button>
+    </Container>
+    
       <br/><h7>Treated Patients</h7><br/>
       <input 
         placeholder="Your Name"
@@ -111,6 +159,19 @@ function Doctor() {
       />
       <button onClick={removePatient}>Remove Patient</button>
     </div>
+    <br/><h7>Add Inventory</h7><br/>
+    <input 
+        placeholder="Inventory"
+        onChange={(e)=>{
+          setDoctorName(e.target.value);
+        }}
+      />
+      <input 
+        placeholder="Quantity"
+        onChange={(e)=>{
+          setQuantity(e.target.value);
+        }}
+      />
     </>
   );
 }
