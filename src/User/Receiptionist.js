@@ -14,22 +14,27 @@ function Receiptionist() {
   //   await addDoc(ref,{Name:newName,Email:newEmail,Credit:10}) 
   // };
 
+const userCollectionRef = collection(firestore, "doctor");
+const getDoctors = async () => {
+  const data = await getDocs(userCollectionRef);
+  setDoctors(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+};
+
   const updateUser = async() =>{
     let doctorref = doc(firestore, "doctor", doctorName)
-    updateDoc(doctorref,{PatientID: arrayUnion(patientID)});
+    updateDoc(doctorref,{PatientID: arrayUnion(patientID)}).then(()=>{
+      getDoctors();
+    });
   };
 
   const deleteUser= async(id) =>{
     let doctorref = doc(firestore, "doctor", doctorName)
-    updateDoc(doctorref,{PatientID: arrayRemove(patientID)});
+    updateDoc(doctorref,{PatientID: arrayRemove(patientID)}).then(()=>{
+      getDoctors();
+    });
   }
 
   useEffect(() => {
-    const userCollectionRef = collection(firestore, "doctor");
-    const getDoctors = async () => {
-      const data = await getDocs(userCollectionRef);
-      setDoctors(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
     getDoctors();
   }, []);
 
