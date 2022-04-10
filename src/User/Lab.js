@@ -163,14 +163,27 @@ function Lab() {
       Delete Issue
     </Button>
     </Container>
-      <br/><h7>Treated Patients</h7><br/>
-      <input 
-        placeholder="Your Name"
-        onChange={(e)=>{
-          setDoctorName(e.target.value);
-        }}
-      />
-      <button onClick={removePatient}>Remove Patient</button>
+      <br/>
+      <h7>Diagonised Patients</h7><br/>
+      <Container style={{ width: "400px" }}>
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Doctor Name"
+            onChange={(e) => setDoctorName(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      
+    </Form>
+    <Button variant="danger" className="edit" onClick={removePatient}>
+      Remove Patient
+    </Button>
+    </Container>
+     
     </div>
     </>
   );
