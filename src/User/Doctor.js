@@ -12,7 +12,7 @@ function Doctor() {
     const [lab,setLab]=useState("");
     const [doctorName,setDoctorName]=useState("");
     const [quantity,setQuantity]=useState(0);
-    const [inventory,setInventory]=useState("");
+    const [inventoryName,setInventoryName]=useState("");
 
     const getPatientInfo = async() =>{
         let doctorref = doc(firestore, "patient", patientID)
@@ -55,13 +55,12 @@ function Doctor() {
       }
 
       const addInventory= async() =>{
-        console.log(patientID)
         let doctorref = doc(firestore, "patient", patientID)
-        let docData = await getDoc(doctorref);
-        console.log(docData.data().inventory);
-        updateDoc(doctorref,{inventory: [...docData.data().inventory,{'ramesh':'45'}]}).then(()=>{
-            setPatientID("");
-        });
+        updateDoc(doctorref,{inventory: arrayUnion(inventoryName)});
+        let inventoryref = doc(firestore, "inventory", inventoryName)
+        let inventorydoc = await getDoc(inventoryref);
+        console.log(inventorydoc.data().available);
+        updateDoc(inventoryref,{available: inventorydoc.data().available-quantity});
       }
 
   return (
@@ -173,7 +172,7 @@ function Doctor() {
     <input 
         placeholder="Inventory"
         onChange={(e)=>{
-          setDoctorName(e.target.value);
+          setInventoryName(e.target.value);
         }}
       />
       <input 
@@ -181,7 +180,8 @@ function Doctor() {
         onChange={(e)=>{
           setQuantity(e.target.value);
         }}
-      /><br/>
+      />
+      <br/>
       <Button variant="secondary" className="edit" onClick={addInventory}>
       Add to Cart
     </Button>
