@@ -9,7 +9,6 @@ function Lab() {
     const [patientID,setPatientID]=useState("");
     const [patientData,setPatientData]=useState([]);
     const [issue,setIssue]= useState("");
-    const [doctorName,setDoctorName]=useState("");
     const [labID,setLabID]=useState("");
     const [labData,setLabData]=useState([]);
 
@@ -49,7 +48,7 @@ function Lab() {
       }
 
       const removePatient= async() =>{
-        let doctorref = doc(firestore, "lab", doctorName)
+        let doctorref = doc(firestore, "lab", labID)
         updateDoc(doctorref,{PatientID: arrayRemove(patientID)}).then(()=>{
             setPatientID("");
         });
@@ -172,8 +171,8 @@ function Lab() {
           <InputGroup.Text id="formItemMax"></InputGroup.Text>
           <Form.Control
             type="text"
-            placeholder="Doctor Name"
-            onChange={(e) => setDoctorName(e.target.value)}
+            placeholder="Lab ID"
+            onChange={(e) => setLabID(e.target.value)}
           />
         </InputGroup>
       </Form.Group>
