@@ -7,7 +7,7 @@ function Patient() {
         <Container>
           <Navbar.Brand href="#home">Hospital Management</Navbar.Brand>
           <Nav className="me-5">
-            <Nav.Link href="/">Home</Nav.Link>
+            
             <Nav.Link href="/inventory">Inventory</Nav.Link>
             <Nav.Link href="/patient">Patient</Nav.Link>
             <Nav.Link href="/doctor">Doctor</Nav.Link>

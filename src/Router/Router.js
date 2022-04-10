@@ -22,6 +22,7 @@ const Rautes = () => {
         <Route path="/inventory" element={<Inventory/>}/>
         <Route path="/lab" element={<Lab/>}/>
         <Route path="/receiptionist" element={<Receiptionist />} />
+        <Route path="/" element={<Receiptionist />} />
       </Routes>
     </>
   );
