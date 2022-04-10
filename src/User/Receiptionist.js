@@ -1,7 +1,9 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import { collection,getDocs,addDoc, updateDoc, doc, deleteDoc,arrayUnion, arrayRemove} from "firebase/firestore";
 import { useState, useEffect } from "react";
+import { Form, Alert, InputGroup,Table, Button } from "react-bootstrap";
 import { firestore } from "../Components/Auth/FireBase";
+import "./Receiptionist.css";
 
 function Receiptionist() {
   const [doctors, setDoctors] = useState([]);
@@ -9,6 +11,8 @@ function Receiptionist() {
   const [doctorName,setDoctorName]=useState("");
   const [patientID,setPatientID]=useState("");
   const ref = collection(firestore,"doctor")
+  const [message, setMessage] = useState({ error: false, msg: "" });
+
 
   // const createUser = async () =>{
   //   await addDoc(ref,{Name:newName,Email:newEmail,Credit:10}) 
@@ -48,30 +52,63 @@ const getDoctors = async () => {
   }, []);
 
   return (
-    <div>
-    <input 
-        placeholder="...Doctor ID"
-        onChange={(e)=>{
-          setDoctorName(e.target.value);
-        }}
-      />
-      <input 
-        placeholder="...Patient ID"
-        onChange={(e)=>{
-          setPatientID(e.target.value);
-        }}
-      />
-      <button onClick={updateUser}>Update Patient ID</button>
-      <button onClick={deleteUser}>Remove Patient ID</button>
-    {/* <button onClick={()=>updateUser(doctor.id,doctor.PatientID)}>Increase Credit</button>
-    <button onClick={()=>deleteUser(doctor.id)}>Delete User</button> */}
+    <>
+    <div className="p-4 box">
+      {message?.msg && (
+          <Alert
+            variant={message?.error ? "danger" : "success"}
+            dismissible
+            onClose={() => setMessage("")}
+          >
+            {message?.msg}
+          </Alert>
+        )}
+    <Form >
+      <Form.Group className="mb-3" controlId="formItemMax">
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Doctor ID"
+            onChange={(e) => setDoctorName(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formItemMax">
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="patient ID"
+            onChange={(e) => setPatientID(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
 
-    <table className="content-table" classNamestyle={{ margin: "50px", 'text-align': 'center', 'padding':'20px' }}>
+       <div className="d-grid gap-6">
+            <Button variant="primary" type="Submit" onClick={updateUser}>
+              Update Patient ID
+            </Button>
+          </div>
+       <div className="d-grid gap-6">
+            <Button variant="primary" type="Submit" onClick={deleteUser}>
+              Remove Patient ID
+            </Button>
+          </div>
+
+    </Form>
+   
+    </div>
+   
+
+    <Table striped bordered hover size="sm">
         <thead>
-          <th>NAME</th>
-          <th>SPECIALIZATION</th>
-          <th>PATIENT ID</th>
-          <th>WORKING DAYS</th>
+          <tr>
+            <th>NAME</th>
+            <th>SPECIALIZATION</th>
+            <th>PATIENT ID</th>
+            <th>WORKING DAYS</th>
+          </tr>
         </thead>
         <tbody>
           {
@@ -87,8 +124,9 @@ const getDoctors = async () => {
             })
           }
         </tbody>
-      </table>
-    </div>
+      </Table>
+
+    </>
   );
 }
 

@@ -10,8 +10,8 @@ function Patient() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/inventory">Inventory</Nav.Link>
             <Nav.Link href="/patient">Patient</Nav.Link>
+            <Nav.Link href="/doctor">Doctor</Nav.Link>
             <Nav.Link href="/receiptionist">Receiptionist</Nav.Link>
-            <Nav.Link href="/user">User</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
