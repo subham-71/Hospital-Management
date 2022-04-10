@@ -2,6 +2,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { collection,getDocs,addDoc, updateDoc, doc, deleteDoc,arrayUnion, arrayRemove, getDoc} from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { firestore } from "../Components/Auth/FireBase";
+import { Container,Form, Alert, InputGroup,Table, Button } from "react-bootstrap";
+
 
 function Doctor() {
     const [patientID,setPatientID]=useState("");
@@ -51,6 +53,25 @@ function Doctor() {
       }
 
   return (
+     <>
+    <div className="p-4 box">
+      
+    <Container style={{ width: "400px" }}>
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
+        <InputGroup>
+          <InputGroup.Text id="formItemMax"></InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Patient ID"
+            onChange={(e) => setPatientID(e.target.value)}
+          />
+        </InputGroup>
+      </Form.Group>
+      
+    </Form>
+    </Container>
+    </div>
     <div>
       <input 
         placeholder="...Patient ID"
@@ -90,6 +111,7 @@ function Doctor() {
       />
       <button onClick={removePatient}>Remove Patient</button>
     </div>
+    </>
   );
 }
 

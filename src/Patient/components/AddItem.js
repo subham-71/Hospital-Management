@@ -87,14 +87,14 @@ const AddItem = ({ id, setItemId }) => {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formItemID">
             <InputGroup>
-              <InputGroup.Text id="formItemID">ID</InputGroup.Text>
+              <InputGroup.Text id="formItemID"></InputGroup.Text>
               <Form.Control type="text" placeholder="Patient ID" value={id} onChange={(e)=>{}}/>
             </InputGroup>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formItemName">
             <InputGroup>
-              <InputGroup.Text id="formItemName">NA</InputGroup.Text>
+              <InputGroup.Text id="formItemName"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Name"
@@ -106,7 +106,7 @@ const AddItem = ({ id, setItemId }) => {
 
           <Form.Group className="mb-3" controlId="formItemAge">
             <InputGroup>
-              <InputGroup.Text id="formItemAge">AG</InputGroup.Text>
+              <InputGroup.Text id="formItemAge"></InputGroup.Text>
               <Form.Control
                 type="number"
                 placeholder="Age"
@@ -118,7 +118,7 @@ const AddItem = ({ id, setItemId }) => {
 
           <Form.Group className="mb-3" controlId="formItemDoctor">
             <InputGroup>
-              <InputGroup.Text id="formItemDoctor">DA</InputGroup.Text>
+              <InputGroup.Text id="formItemDoctor"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Doctor Assigned"
@@ -130,7 +130,7 @@ const AddItem = ({ id, setItemId }) => {
 
           <Form.Group className="mb-3" controlId="formItemLV">
             <InputGroup>
-              <InputGroup.Text id="formItemLV">LA</InputGroup.Text>
+              <InputGroup.Text id="formItemLV"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Last Visited"
@@ -142,7 +142,7 @@ const AddItem = ({ id, setItemId }) => {
 
           <Form.Group className="mb-3" controlId="formItemDD">
             <InputGroup>
-              <InputGroup.Text id="formItemDD">DD</InputGroup.Text>
+              <InputGroup.Text id="formItemDD"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Due Date"

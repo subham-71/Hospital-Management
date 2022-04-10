@@ -75,7 +75,7 @@ const AddItem = ({ id, setItemId }) => {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formItemTitle">
             <InputGroup>
-              <InputGroup.Text id="formItemTitle">T</InputGroup.Text>
+              <InputGroup.Text id="formItemTitle"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Item Title"
@@ -87,7 +87,7 @@ const AddItem = ({ id, setItemId }) => {
 
           <Form.Group className="mb-3" controlId="formItemAuthor">
             <InputGroup>
-              <InputGroup.Text id="formItemAuthor">A</InputGroup.Text>
+              <InputGroup.Text id="formItemAuthor"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Items available currently"
@@ -99,7 +99,7 @@ const AddItem = ({ id, setItemId }) => {
 
           <Form.Group className="mb-3" controlId="formItemMax">
             <InputGroup>
-              <InputGroup.Text id="formItemMax">M</InputGroup.Text>
+              <InputGroup.Text id="formItemMax"></InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Max item available"

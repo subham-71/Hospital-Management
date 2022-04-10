@@ -11,6 +11,7 @@
   width : 100px;
   padding: 0px 6px;
   border-radius: 2px;
+
 }
 
 
@@ -25,4 +26,9 @@
 
 }
 
+.flex-container{
+    display: flex;
+     text-align: center;
+  justify-content: center;
+}
 

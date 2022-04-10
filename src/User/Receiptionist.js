@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import { collection,getDocs,addDoc, updateDoc, doc, deleteDoc,arrayUnion, arrayRemove} from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { Form, Alert, InputGroup,Table, Button } from "react-bootstrap";
+import { Container,Form, Alert, InputGroup,Table, Button } from "react-bootstrap";
 import { firestore } from "../Components/Auth/FireBase";
 import "./Receiptionist.css";
 
@@ -55,7 +55,7 @@ const getDoctors = async () => {
     <>
     <div className="p-4 box">
     
-    {/* <Container style={{ width: "400px" }}> */}
+    <Container style={{ width: "400px" }}>
     <Form style={{'max-width':'400px','text-align':'center'}}>
       <Form.Group className="mb-3" controlId="formItemMax" >
         <InputGroup>
@@ -78,8 +78,11 @@ const getDoctors = async () => {
         </InputGroup>
       </Form.Group>
     </Form>
-    <div className="d-grid gap-6">
-            <Button variant="secondary" className="edit" onClick={updateUser}>
+    </Container>
+
+    <Container style={{ width: "400px" }}>
+    <div class ="flex-container" >
+            <Button variant="primary" className="edit" onClick={updateUser}>
               Update Patient ID
             </Button>
       
@@ -87,6 +90,7 @@ const getDoctors = async () => {
               Remove Patient ID
             </Button>
           </div>
+      </Container>
     </div >
     <div  className="p-table">
     <Table striped bordered hover size="sm">
