@@ -8,6 +8,7 @@ function Doctor() {
     const [patientData,setPatientData]=useState([]);
     const [issue,setIssue]= useState("");
     const [lab,setLab]=useState("");
+    const [doctorName,setDoctorName]=useState("");
 
     const getPatientInfo = async() =>{
         let doctorref = doc(firestore, "patient", patientID)
@@ -42,6 +43,13 @@ function Doctor() {
         });
       }
 
+      const removePatient= async() =>{
+        let doctorref = doc(firestore, "doctor", doctorName)
+        updateDoc(doctorref,{PatientID: arrayRemove(patientID)}).then(()=>{
+            setPatientID("");
+        });
+      }
+
   return (
     <div>
       <input 
@@ -73,6 +81,14 @@ function Doctor() {
         }}
       />
       <button onClick={assignLab}>Assign Lab</button>
+      <br/><h7>Treated Patients</h7><br/>
+      <input 
+        placeholder="Your Name"
+        onChange={(e)=>{
+          setDoctorName(e.target.value);
+        }}
+      />
+      <button onClick={removePatient}>Remove Patient</button>
     </div>
   );
 }

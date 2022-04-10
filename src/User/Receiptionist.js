@@ -10,7 +10,6 @@ function Receiptionist() {
   const [labs, setLabs] = useState([]);
   const [doctorName,setDoctorName]=useState("");
   const [patientID,setPatientID]=useState("");
-  const ref = collection(firestore,"doctor")
   const [message, setMessage] = useState({ error: false, msg: "" });
 
 
@@ -25,13 +24,14 @@ const getDoctors = async () => {
 };
 
   const updateUser = async() =>{
+    console.log("hi");
     let doctorref = doc(firestore, "doctor", doctorName)
     updateDoc(doctorref,{PatientID: arrayUnion(patientID)}).then(()=>{
       getDoctors();
     });
   };
 
-  const deleteUser= async(id) =>{
+  const deleteUser= async() =>{
     let doctorref = doc(firestore, "doctor", doctorName)
     updateDoc(doctorref,{PatientID: arrayRemove(patientID)}).then(()=>{
       getDoctors();
@@ -54,17 +54,10 @@ const getDoctors = async () => {
   return (
     <>
     <div className="p-4 box">
-      {message?.msg && (
-          <Alert
-            variant={message?.error ? "danger" : "success"}
-            dismissible
-            onClose={() => setMessage("")}
-          >
-            {message?.msg}
-          </Alert>
-        )}
-    <Form >
-      <Form.Group className="mb-3" controlId="formItemMax">
+    
+    {/* <Container style={{ width: "400px" }}> */}
+    <Form style={{'max-width':'400px','text-align':'center'}}>
+      <Form.Group className="mb-3" controlId="formItemMax" >
         <InputGroup>
           <InputGroup.Text id="formItemMax"></InputGroup.Text>
           <Form.Control
@@ -84,23 +77,18 @@ const getDoctors = async () => {
           />
         </InputGroup>
       </Form.Group>
-
-       <div className="d-grid gap-6">
-            <Button variant="primary" type="Submit" onClick={updateUser}>
+    </Form>
+    <div className="d-grid gap-6">
+            <Button variant="secondary" className="edit" onClick={updateUser}>
               Update Patient ID
             </Button>
-          </div>
-       <div className="d-grid gap-6">
-            <Button variant="primary" type="Submit" onClick={deleteUser}>
+      
+            <Button variant="danger" className="delete"  type="Submit" onClick={deleteUser}>
               Remove Patient ID
             </Button>
           </div>
-
-    </Form>
-   
-    </div>
-   
-
+    </div >
+    <div  className="p-table">
     <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -125,7 +113,8 @@ const getDoctors = async () => {
           }
         </tbody>
       </Table>
-
+    </div>
+  
     </>
   );
 }
