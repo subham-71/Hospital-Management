@@ -33,7 +33,7 @@ const ItemsList = ({ getItemId }) => {
             <th>Doctor Assigned</th>
             <th>Last Visited</th>
             <th>Due Date</th>
-            <th>Action</th>
+          
           </tr>
         </thead>
         <tbody>
@@ -46,22 +46,7 @@ const ItemsList = ({ getItemId }) => {
                 <td>{doc.doctorAssigned}</td>
                 <td>{doc.lastVisited}</td>
                 <td>{doc.dueDate}</td>
-                <td>
-                  <Button
-                    variant="secondary"
-                    className="edit"
-                    onClick={(e) => getItemId(doc.id)}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="danger"
-                    className="delete"
-                    onClick={(e) => deleteHandler(doc.id)}
-                  >
-                    Delete
-                  </Button>
-                </td>
+               
               </tr>
             );
           })}

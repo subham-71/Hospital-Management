@@ -89,7 +89,7 @@ const AddItem = ({ id, setItemId }) => {
             <InputGroup>
               <InputGroup.Text id="formItemAuthor"></InputGroup.Text>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Items available currently"
                 value={available}
                 onChange={(e) => setAvailable(e.target.value)}
@@ -101,7 +101,7 @@ const AddItem = ({ id, setItemId }) => {
             <InputGroup>
               <InputGroup.Text id="formItemMax"></InputGroup.Text>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Max item available"
                 value={max}
                 onChange={(e) => setMax(e.target.value)}

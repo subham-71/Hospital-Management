@@ -17,7 +17,7 @@ const Rautes = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/patient" element={<Patient />} />
+        {/* <Route path="/patient" element={<Patient />} /> */}
         <Route path="/doctor" element={<Doctor/>} />
         <Route path="/inventory" element={<Inventory/>}/>
         <Route path="/receiptionist" element={<Receiptionist />} />

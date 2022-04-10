@@ -54,11 +54,21 @@ function Doctor() {
         });
       }
 
+      const addInventory= async() =>{
+        console.log(patientID)
+        let doctorref = doc(firestore, "patient", patientID)
+        let docData = await getDoc(doctorref);
+        console.log(docData.data().inventory);
+        updateDoc(doctorref,{inventory: [...docData.data().inventory,{'ramesh':'45'}]}).then(()=>{
+            setPatientID("");
+        });
+      }
+
   return (
      <>
     <div className="p-4 box">
 
-    <Container style={{ width: "400px" }}>
+    <Container style={{ 'width': "400px" , display:'flex',padding :'5px' }}>
     <Form style={{'max-width':'400px','text-align':'center'}}>
       <Form.Group className="mb-3" controlId="formItemMax" >
         <InputGroup>
@@ -72,9 +82,9 @@ function Doctor() {
       </Form.Group>
       
     </Form>
-    <Button variant="primary" className="edit" onClick={getPatientInfo}>
-      Get Patient Details
-            </Button>
+    <button variant="primary" className="edit" onClick={getPatientInfo} style ={{'margin-left':'5px'}}>
+      Get Details
+            </button>
     </Container>
     </div>
     <Container style={{ width: "1000px" }}>
@@ -145,7 +155,7 @@ function Doctor() {
       </Form.Group>
       
     </Form>
-    <Button variant="secondary" className="edit" onClick={addNewIssue}>
+    <Button variant="secondary" className="edit" onClick={assignLab}>
       Assign Lab
     </Button>
     </Container>
@@ -171,7 +181,10 @@ function Doctor() {
         onChange={(e)=>{
           setQuantity(e.target.value);
         }}
-      />
+      /><br/>
+      <Button variant="secondary" className="edit" onClick={addInventory}>
+      Add to Cart
+    </Button>
     </>
   );
 }
