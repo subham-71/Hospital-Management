@@ -1,8 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import { collection,getDocs,addDoc, updateDoc, doc, deleteDoc} from "firebase/firestore";
+import { collection,getDocs,addDoc, updateDoc, doc, deleteDoc,arrayUnion, arrayRemove} from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { firestore } from "../Components/Auth/FireBase";
-import "./Inventory.css";
 
 function Receiptionist() {
   const [doctors, setDoctors] = useState([]);
@@ -16,14 +15,14 @@ function Receiptionist() {
   // };
 
   const updateUser = async() =>{
-    //  let doctorref = db.collection("doctor").doc(doctorName);
-    //  doctorref.update({PatientID: firebase.firestore.FieldValue.arrayUnion(patientID)});
+    let doctorref = doc(firestore, "doctor", doctorName)
+    updateDoc(doctorref,{PatientID: arrayUnion(patientID)});
   };
 
-  // const deleteUser= async(id) =>{
-  //   const userDoc = doc(db,"users",id);
-  //   await deleteDoc(userDoc);
-  // }
+  const deleteUser= async(id) =>{
+    let doctorref = doc(firestore, "doctor", doctorName)
+    updateDoc(doctorref,{PatientID: arrayRemove(patientID)});
+  }
 
   useEffect(() => {
     const userCollectionRef = collection(firestore, "doctor");
@@ -58,6 +57,7 @@ function Receiptionist() {
         }}
       />
       <button onClick={updateUser}>Update Patient ID</button>
+      <button onClick={deleteUser}>Remove Patient ID</button>
     {/* <button onClick={()=>updateUser(doctor.id,doctor.PatientID)}>Increase Credit</button>
     <button onClick={()=>deleteUser(doctor.id)}>Delete User</button> */}
 
