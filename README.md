@@ -1,4 +1,4 @@
-# HACKSTACK'22 - HOSPITAL MANAGEMENT SYSTEM
+# HOSPITAL MANAGEMENT SYSTEM
 
 We have created a robust digital solution for the hospital management system. This has the potential to replace the old way of how the hospital works.
 
