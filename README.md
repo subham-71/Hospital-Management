@@ -1,5 +1,7 @@
 # HOSPITAL MANAGEMENT SYSTEM
 
+![YouTube](https://www.youtube.com/watch?v=4b9pvcbeNiY)
+
 We have created a robust digital solution for the hospital management system. This has the potential to replace the old way of how the hospital works.
 
 Our prototype has solutions for the entire hospital machinery from receiptionist, doctor, lab to the medicine shop. This involves all the stakeholders of the hospital system.
